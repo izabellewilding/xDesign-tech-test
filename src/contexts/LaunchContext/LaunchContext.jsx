@@ -24,7 +24,8 @@ export const LaunchProvider = ({ children }) => {
         listLaunches: React.useCallback(async () => {
           setFilter("");
           const response = await GetLaunchesAPI();
-          setItems(response);
+          const data = await response.json();
+          setItems(data);
         }, []),
         items,
         sort,
