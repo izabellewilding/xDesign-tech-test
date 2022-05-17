@@ -1,4 +1,4 @@
-[Live preview available here](xdesign-tech-test-spacex.netlify.app)
+[Live preview available here](https://xdesign-tech-test-spacex.netlify.app/)
 
 
 # SpaceX App
