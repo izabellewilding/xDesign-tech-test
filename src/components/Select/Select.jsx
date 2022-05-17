@@ -28,7 +28,9 @@ export const Select = ({ label, classes, error, allowDisabledState }) => {
           setFilter(event.target.value);
         }}
         value={filter}
+        placeholder="Filter by Year"
       >
+        <option value="">Filter by Year</option>
         {years.map((year, i) => (
           <option key={`${year}_${i}`} value={year}>
             {year}
