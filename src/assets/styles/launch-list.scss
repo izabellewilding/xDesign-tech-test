@@ -1,8 +1,17 @@
 .launch-list {
   display: flex;
   flex-direction: column;
+  padding-top: 1.3rem;
+  height: 100%;
+}
+
+.launch-list-container {
+  height: 100%;
+}
+
+.launch-list-fallback-container {
+  display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 1.3rem;
   height: 100%;
 }

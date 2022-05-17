@@ -24,19 +24,25 @@ export const LaunchList = ({ items, filter, sort }) => {
   });
 
   return (
-    <ul className="launch-list">
-      {loading && <ClipLoader loading={loading} size={100} />}
-      {error && (
-        <p>
-          Sorry, something went wrong.
-          <br /> Please try the refresh button.
-        </p>
+    <div className="launch-list-container">
+      {(loading || error) && (
+        <div className="launch-list-fallback-container">
+          {loading && <ClipLoader loading={loading} size={100} />}
+          {error && (
+            <p>
+              Sorry, something went wrong.
+              <br /> Please try the refresh button.
+            </p>
+          )}
+        </div>
       )}
-      {launches &&
-        !loading &&
-        launches.map((item, index) => {
-          return <LaunchItem key={index} item={item} index={index} />;
-        })}
-    </ul>
+      {launches && !loading && (
+        <ul className="launch-list">
+          {launches.map((item, index) => {
+            return <LaunchItem key={index} item={item} index={index} />;
+          })}
+        </ul>
+      )}
+    </div>
   );
 };
