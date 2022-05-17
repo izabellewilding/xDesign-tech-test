@@ -7,7 +7,7 @@ import { Select } from "../Select";
 import { useLaunchContext } from "../../contexts/LaunchContext";
 
 export const Body = () => {
-  const { filter, setSort, sort, items, years } = useLaunchContext();
+  const { filter, setSort, sort, items } = useLaunchContext();
 
   return (
     <div className="app__body">
@@ -25,7 +25,6 @@ export const Body = () => {
             classes="select"
             label={LABEL.FILTER_BY_YEAR}
             testId="filter-button-test"
-            years={years}
           />
           <Button
             filter={filter}

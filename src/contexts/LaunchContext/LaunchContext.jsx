@@ -18,7 +18,6 @@ export const LaunchProvider = ({ children }) => {
   const [items, setItems] = useState([]);
   const [sort, setSort] = useState(false);
   const [filter, setFilter] = useState("");
-  const [years, setYears] = useState([]);
 
   return (
     <LaunchContext.Provider
@@ -33,15 +32,8 @@ export const LaunchProvider = ({ children }) => {
         sort,
         setSort,
         filter,
-        setFilter,
-        years,
-        listYears: useCallback(() => {
-          const launchYears = items.map((launch) => launch.launch_year);
-          const filteredYears = launchYears.filter(
-            (item, pos) => launchYears.indexOf(item) === pos
-          );
-          setYears(filteredYears);
-        }, [items]),
+        setFilter: () =>
+          setItems(items.filter((item) => item.launch_year === filter)),
       }}
     >
       {children}
