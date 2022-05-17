@@ -29,8 +29,8 @@ export const LaunchProvider = ({ children }) => {
           try {
             setError();
             setLoading(true);
-            const response = await GetLaunchesAPI();
-            const data = await response.json();
+            const data = await GetLaunchesAPI();
+
             setItems(data);
             setLoading(false);
           } catch (e) {
