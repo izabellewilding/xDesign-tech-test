@@ -10,11 +10,13 @@ export const Header = () => {
   return (
     <header className="app__header">
       <div className="app__logo">
-        <img
-          className="app__logo-image"
-          alt="spacex-logo"
-          src={CONSTANTS.LOGO}
-        />
+        <a href="/">
+          <img
+            className="app__logo-image"
+            alt="spacex-logo"
+            src={CONSTANTS.LOGO}
+          />
+        </a>
         <span className="app__logo-txt">{LABEL.LAUNCHES}</span>
       </div>
       <Button
