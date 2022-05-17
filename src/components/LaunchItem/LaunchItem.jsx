@@ -8,7 +8,7 @@ export const LaunchItem = ({ item, index }) => {
     <li key={index} className="launch-item">
       <div className="launch-item-primary">
         <span className="launch-item-number">{`#${flight_number}`}</span>
-        <span>{`${mission_name}`}</span>
+        <span className="launch-item-mission-name">{mission_name}</span>
       </div>
       <div className="launch-item-secondary">
         <span className="launch-item-date">
