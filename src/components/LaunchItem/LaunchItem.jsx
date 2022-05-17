@@ -12,7 +12,7 @@ export const LaunchItem = ({ item, index }) => {
       </div>
       <div className="launch-item-secondary">
         <span className="launch-item-date">
-          {moment(launch_date_utc).format("MMM Do YY")}
+          {moment(launch_date_utc).format("Do MMM YYYY")}
         </span>
         <span className="launch-item-rocket-name">{rocket.rocket_name}</span>
       </div>
