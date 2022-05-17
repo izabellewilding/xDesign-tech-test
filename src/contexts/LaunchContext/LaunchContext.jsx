@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext, useCallback, createContext } from "react";
 import { GetLaunchesAPI } from "../../api/GetLaunches";
 
 export const launchContextDefaults = {
@@ -8,20 +8,22 @@ export const launchContextDefaults = {
   setSort: Function,
   filter: "",
   setFilter: Function,
+  listYears: Function,
 };
 
-export const LaunchContext = React.createContext(launchContextDefaults);
-export const useLaunchContext = () => React.useContext(LaunchContext);
+export const LaunchContext = createContext(launchContextDefaults);
+export const useLaunchContext = () => useContext(LaunchContext);
 
 export const LaunchProvider = ({ children }) => {
-  const [items, setItems] = React.useState([]);
-  const [sort, setSort] = React.useState(false);
-  const [filter, setFilter] = React.useState("");
+  const [items, setItems] = useState([]);
+  const [sort, setSort] = useState(false);
+  const [filter, setFilter] = useState("");
+  const [years, setYears] = useState([]);
 
   return (
     <LaunchContext.Provider
       value={{
-        listLaunches: React.useCallback(async () => {
+        listLaunches: useCallback(async () => {
           setFilter("");
           const response = await GetLaunchesAPI();
           const data = await response.json();
@@ -32,6 +34,14 @@ export const LaunchProvider = ({ children }) => {
         setSort,
         filter,
         setFilter,
+        years,
+        listYears: useCallback(() => {
+          const launchYears = items.map((launch) => launch.launch_year);
+          const filteredYears = launchYears.filter(
+            (item, pos) => launchYears.indexOf(item) === pos
+          );
+          setYears(filteredYears);
+        }, [items]),
       }}
     >
       {children}

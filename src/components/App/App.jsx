@@ -4,11 +4,12 @@ import { Body } from "../Body";
 import { useLaunchContext } from "../../contexts/LaunchContext";
 
 export const App = () => {
-  const { listLaunches } = useLaunchContext();
+  const { listLaunches, listYears } = useLaunchContext();
 
   React.useEffect(() => {
     listLaunches();
-  }, [listLaunches]);
+    listYears();
+  }, [listLaunches, listYears]);
 
   return (
     <div className="app">
