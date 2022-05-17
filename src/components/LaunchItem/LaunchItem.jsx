@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 
 export const LaunchItem = ({ item, index }) => {
   //missing rocket name
@@ -12,8 +13,7 @@ export const LaunchItem = ({ item, index }) => {
       </div>
       <div>
         <span>
-          {/* use moment here */}
-          <span>{launch_date_utc}</span>
+          <span> {moment(launch_date_utc).format("MMM Do YY")}</span>
           {/* missing rocket name */}
         </span>
       </div>
