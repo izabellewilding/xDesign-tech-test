@@ -3,6 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  max-width: 100vw;
   max-height: 81px;
   padding: 8px 16px 8px 32px;
   box-shadow: rgb(0 0 0 / 10%) 0px 0px 2px 0px, rgb(0 0 0 / 10%) 0px 2px 4px 0px;
@@ -17,11 +18,28 @@
   align-items: center;
   font-size: 32px;
   font-weight: $medium;
+
+  @media (max-width: $breakpoint-tablet) {
+    font-size: 24px;
+    grid-column-gap: 0px;
+    padding-right: 10px;
+  }
 }
 
 .launch-item-number {
   font-size: 40px;
   width: 12px;
+
+  @media (max-width: $breakpoint-tablet) {
+    font-size: 24px;
+  }
+}
+
+.launch-item-mission-name {
+  min-width: 50px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .launch-item-secondary {
@@ -29,8 +47,8 @@
   flex-direction: column;
   justify-content: center;
   text-align: end;
+
   white-space: nowrap;
-  overflow: ellipsis;
 }
 
 .launch-item-date {
