@@ -18,21 +18,34 @@ export const LaunchProvider = ({ children }) => {
   const [items, setItems] = useState([]);
   const [sort, setSort] = useState(false);
   const [filter, setFilter] = useState("");
+  const [error, setError] = useState();
+  const [loading, setLoading] = useState();
 
   return (
     <LaunchContext.Provider
       value={{
         listLaunches: useCallback(async () => {
           setFilter("");
-          const response = await GetLaunchesAPI();
-          const data = await response.json();
-          setItems(data);
+          try {
+            setError();
+            setLoading(true);
+            const response = await GetLaunchesAPI();
+            const data = await response.json();
+            setItems(data);
+            setLoading(false);
+          } catch (e) {
+            setLoading(false);
+            setError(e);
+            console.error(e);
+          }
         }, []),
         items,
         sort,
         setSort,
         filter,
         setFilter,
+        error,
+        loading,
       }}
     >
       {children}

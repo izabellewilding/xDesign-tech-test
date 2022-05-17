@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { LaunchItem } from "../LaunchItem";
+import ClipLoader from "react-spinners/ClipLoader";
+import { useLaunchContext } from "../../contexts/LaunchContext";
 
 export const LaunchList = ({ items, filter, sort }) => {
+  const { loading, error } = useLaunchContext();
+
   const [filteredItems, setFilteredItems] = useState([...items]);
 
   useEffect(() => {
@@ -21,9 +25,18 @@ export const LaunchList = ({ items, filter, sort }) => {
 
   return (
     <ul className="launch-list">
-      {launches.map((item, index) => {
-        return <LaunchItem key={index} item={item} index={index} />;
-      })}
+      {loading && <ClipLoader loading={loading} size={100} />}
+      {error && (
+        <p>
+          Sorry, something went wrong.
+          <br /> Please try the refresh button.
+        </p>
+      )}
+      {launches &&
+        !loading &&
+        launches.map((item, index) => {
+          return <LaunchItem key={index} item={item} index={index} />;
+        })}
     </ul>
   );
 };
