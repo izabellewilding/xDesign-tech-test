@@ -47,6 +47,8 @@
   @media (max-width: $breakpoint-wide) {
     &__main-image {
       max-width: 40rem;
+      position: sticky;
+      top: 0;
     }
   }
 
