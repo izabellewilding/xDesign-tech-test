@@ -26,3 +26,5 @@ GitHub - [https://github.com/r-spacex/SpaceX-API](https://github.com/r-spacex/Sp
 - Fix loading indicator flashing for a second in top left corner
 
 - Image is sticky until the list renders so this would need looking at if I had more time
+
+- Accessbility optimisations using React Axe CLI tool 
