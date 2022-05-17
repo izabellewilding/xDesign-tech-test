@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { LaunchItem } from "../LaunchItem";
 
 export const LaunchList = ({ items, filter, sort }) => {
-  let filteredItems = [...items];
+  const [filteredItems, setFilteredItems] = useState([...items]);
 
-  if (filter !== "") {
-    //write filter function below
-  }
+  // let filteredItems = [...items];
+  useEffect(() => {
+    if (filter !== "") {
+      setFilteredItems(items.filter((item) => item.launch_year === filter));
+    } else {
+      setFilteredItems([...items]);
+    }
+  }, [filter, items]);
 
   //Bug in the sorting function below
   const launches = filteredItems.sort((a, b) => {

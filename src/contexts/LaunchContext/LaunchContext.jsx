@@ -32,8 +32,7 @@ export const LaunchProvider = ({ children }) => {
         sort,
         setSort,
         filter,
-        setFilter: () =>
-          setItems(items.filter((item) => item.launch_year === filter)),
+        setFilter,
       }}
     >
       {children}
